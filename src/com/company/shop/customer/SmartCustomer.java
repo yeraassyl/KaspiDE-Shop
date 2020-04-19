@@ -3,6 +3,7 @@ package com.company.shop.customer;
 import com.company.shop.checkout.Cashier;
 import com.company.shop.checkout.Checkout;
 
+import java.util.List;
 import java.util.Objects;
 
 public class SmartCustomer extends Customer{
@@ -12,9 +13,11 @@ public class SmartCustomer extends Customer{
     }
 
     @Override
-    public Cashier findCashier() {
-        return Objects.requireNonNull(Checkout.getInstance().getActiveCashiers().stream().reduce((a, b) ->
+    public void chooseQueue(List<Cashier> cashiers) throws NullPointerException{
+        Objects.requireNonNull(
+            cashiers.stream().reduce((a, b) ->
                 a.getQueue().stream().mapToInt(c->c.getCart().itemCount()).sum() <
-                b.getQueue().stream().mapToInt(c->c.getCart().itemCount()).sum() ? a : b).orElse(null));
+                b.getQueue().stream().mapToInt(c->c.getCart().itemCount()).sum() ? a : b).orElse(null)
+        ).addToQueue(this);
     }
 }

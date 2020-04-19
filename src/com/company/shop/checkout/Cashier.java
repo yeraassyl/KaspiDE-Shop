@@ -41,17 +41,8 @@ public class Cashier implements QueueLine{
         this.state = state;
     }
 
-    public LinkedList<Customer> getQueue() {
-        return queue;
-    }
-
     public int getCustomersCount(){
         return queue.size();
-    }
-
-    @Override
-    public void addToQueue(Customer customer) {
-        queue.add(customer);
     }
 
     public boolean isActive(){
@@ -59,20 +50,30 @@ public class Cashier implements QueueLine{
     }
 
     @Override
-    public void handleFirst() {
-        Customer customer = queue.removeFirst();
-        String receipt = String.format(
-                "%s Cashier %d:Receipt of customer %d: %f",
-                LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME),
+    public LinkedList<Customer> getQueue() {
+        return queue;
+    }
+
+    @Override
+    public void addToQueue(Customer customer) {
+        queue.add(customer);
+    }
+
+    @Override
+    public Customer retrieveFirst(){
+        return queue.removeFirst();
+    }
+
+    public String message(Customer customer){
+        return String.format(
+                "Cashier %d: Receipt of customer %d - %f",
                 this.id,
                 customer.getId(),
                 customer.getCart().totalPrice());
-        System.out.println(receipt);
     }
 
     @Override
     public boolean isEmpty() {
         return queue.isEmpty();
     }
-
 }

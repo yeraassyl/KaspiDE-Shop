@@ -2,8 +2,10 @@ package com.company.shop.cart;
 import com.company.items.Item;
 import com.company.items.foods.Food;
 
+import java.io.Serializable;
 
-public class Cart {
+
+public class Cart implements Serializable {
     private final SubCart<Food> foods;
     private final SubCart<Item> goods;
 

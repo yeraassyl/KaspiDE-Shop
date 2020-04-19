@@ -4,7 +4,10 @@ import com.company.items.Item;
 import com.company.shop.cart.Cart;
 import com.company.shop.checkout.Cashier;
 
-public abstract class Customer {
+import java.io.Serializable;
+import java.util.List;
+
+public abstract class Customer implements Serializable {
     private final long id;
     private Cart cart;
 
@@ -24,6 +27,10 @@ public abstract class Customer {
         return id;
     }
 
+    public boolean isCartEmpty(){
+        return cart == null;
+    }
+
     public void addItem(Item item){
         if (cart == null){
             cart = new Cart();
@@ -31,12 +38,6 @@ public abstract class Customer {
         cart.addItem(item);
     }
 
-    public abstract Cashier findCashier();
-
-    public void queueUp(){
-        if (cart == null)
-            throw new NullPointerException();
-        findCashier().addToQueue(this);
-    }
+    public abstract void chooseQueue(List<Cashier> cashiers);
 
 }

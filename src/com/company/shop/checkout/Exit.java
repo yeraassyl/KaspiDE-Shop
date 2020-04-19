@@ -2,21 +2,14 @@ package com.company.shop.checkout;
 
 import com.company.shop.customer.Customer;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 
 public class Exit implements QueueLine {
 
-    private static final Exit instance = new Exit();
     private final LinkedList<Customer> queue;
 
-    private Exit(){
+    public Exit(){
         queue = new LinkedList<Customer>();
-    }
-
-    public static Exit getInstance(){
-        return instance;
     }
 
     @Override
@@ -30,15 +23,18 @@ public class Exit implements QueueLine {
     }
 
     @Override
-    public void handleFirst() {
-        System.out.println(LocalDateTime.now().format(DateTimeFormatter.ISO_TIME)
-                + " Customer " + queue.removeFirst().getId() + "is leaving");
+    public Customer retrieveFirst(){
+        return queue.removeFirst();
+    }
+
+    @Override
+    public String message(Customer customer) {
+        return String.format("Customer %d is leaving", customer.getId());
     }
 
     @Override
     public boolean isEmpty() {
         return queue.isEmpty();
     }
-
 
 }

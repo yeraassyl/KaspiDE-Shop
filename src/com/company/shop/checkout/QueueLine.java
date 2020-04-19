@@ -1,22 +1,24 @@
 package com.company.shop.checkout;
 
+import com.company.Logger;
 import com.company.shop.customer.Customer;
 
+import java.io.Serializable;
 import java.util.Queue;
 
-public interface QueueLine {
+public interface QueueLine extends Serializable {
     Queue<Customer> getQueue();
-    void handleFirst();
+    Customer retrieveFirst();
     boolean isEmpty();
-
     void addToQueue(Customer customer);
+    String message(Customer customer);
 
     default void handleAll(){
         while (!isEmpty())
-            handleFirst();
+            handle();
     }
 
-    default String dateFormat(){
-        return "yyyy-MM-dd'T'HH:mm:ss'Z'";
+    default void handle(){
+        Logger.getInstance().log(message(retrieveFirst()));
     }
 }

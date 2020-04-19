@@ -3,12 +3,13 @@ package com.company.shop.cart;
 import com.company.items.Expirable;
 import com.company.items.Item;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SubCart<E extends Item>{
+public class SubCart<E extends Item> implements Serializable {
     private final ArrayList<E> items;
 
     public SubCart(){

@@ -4,24 +4,16 @@ import com.company.shop.customer.Customer;
 import com.company.shop.customer.SmartCustomer;
 import sun.awt.image.ImageWatched;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Checkout {
-
-    private static Checkout instance;
+public class Checkout implements Serializable {
 
     private final List<Cashier> cashiers;
     private static int idCounter = 1;
-    private Checkout(){
+    public Checkout(){
         cashiers = new ArrayList<>();
-    }
-
-    public static Checkout getInstance() {
-        if (instance == null){
-            instance = new Checkout();
-        }
-        return instance;
     }
 
     public Checkout(ArrayList<Cashier> cashiers){
@@ -39,4 +31,5 @@ public class Checkout {
     public List<Cashier> getActiveCashiers(){
         return cashiers.stream().filter(Cashier::isActive).collect(Collectors.toList());
     }
+
 }
