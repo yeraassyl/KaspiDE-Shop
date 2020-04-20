@@ -10,8 +10,8 @@ public class Cart implements Serializable {
     private final SubCart<Item> goods;
 
     public Cart(){
-        this.foods = new SubCart<Food>();
-        this.goods = new SubCart<Item>();
+        this.foods = new SubCart<>();
+        this.goods = new SubCart<>();
     }
 
     public SubCart<Food> getFoods() {
@@ -34,6 +34,5 @@ public class Cart implements Serializable {
     public double totalPrice(){
         return foods.totalPrice() + goods.totalPrice();
     }
-
 }
 

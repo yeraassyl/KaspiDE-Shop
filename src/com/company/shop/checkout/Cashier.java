@@ -3,12 +3,9 @@ package com.company.shop.checkout;
 
 import com.company.shop.customer.Customer;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 
-public class Cashier implements QueueLine{
+public class Cashier implements QueueLine {
 
     public enum CashierState {
         ACTIVE("Cashier is working"),
@@ -30,7 +27,7 @@ public class Cashier implements QueueLine{
     public Cashier(int id, CashierState state){
         this.id = id;
         this.state = state;
-        this.queue = new LinkedList<Customer>();
+        this.queue = new LinkedList<>();
     }
 
     public CashierState getState() {

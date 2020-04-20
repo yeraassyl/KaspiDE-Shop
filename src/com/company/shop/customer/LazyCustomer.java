@@ -1,7 +1,6 @@
 package com.company.shop.customer;
 
 import com.company.shop.checkout.Cashier;
-import com.company.shop.checkout.Checkout;
 
 import java.util.List;
 

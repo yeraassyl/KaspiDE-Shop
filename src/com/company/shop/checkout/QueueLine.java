@@ -1,6 +1,6 @@
 package com.company.shop.checkout;
 
-import com.company.Logger;
+import com.company.util.Logger;
 import com.company.shop.customer.Customer;
 
 import java.io.Serializable;
@@ -19,6 +19,7 @@ public interface QueueLine extends Serializable {
     }
 
     default void handle(){
-        Logger.getInstance().log(message(retrieveFirst()));
+        String msg = message(retrieveFirst());
+        Logger.getInstance().log(msg);
     }
 }
