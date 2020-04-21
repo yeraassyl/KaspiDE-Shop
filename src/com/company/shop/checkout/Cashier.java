@@ -1,9 +1,13 @@
 package com.company.shop.checkout;
 
 
+import com.company.items.Item;
+import com.company.shop.Record;
+import com.company.shop.Shop;
+import com.company.shop.cart.Cart;
 import com.company.shop.customer.Customer;
 
-import java.util.LinkedList;
+import java.util.*;
 
 public class Cashier implements QueueLine {
 
@@ -56,21 +60,46 @@ public class Cashier implements QueueLine {
         queue.add(customer);
     }
 
-    @Override
-    public Customer retrieveFirst(){
-        return queue.removeFirst();
+    public List<Record> handleAll(HashMap<Customer, Boolean> customerDiscount) {
+        Customer customer;
+        List<Record> records = new ArrayList<>();
+        while (!isNotEmpty()){
+            customer = queue.removeFirst();
+            boolean discount = customerDiscount.get(customer);
+            records.add(handle(customer, discount));
+        }
+        return records;
     }
 
-    public String message(Customer customer){
-        return String.format(
-                "Cashier %d: Receipt of customer %d - %f",
-                this.id,
-                customer.getId(),
-                customer.getCart().totalPrice());
+    public Record handle(Customer customer, boolean discount){
+        Cart cart = customer.getCart();
+        long customerId = customer.getId();
+        double totalPrice = cart.totalPrice();
+        double totalDiscountPrice;
+        String msg;
+        if (discount){
+            totalDiscountPrice = cart.totalPrice(Shop.DISCOUNT_PERCENTAGE);
+            msg = messageBuilder(customerId, totalPrice, totalDiscountPrice);
+        }
+        else{
+            msg = messageBuilder(customerId, totalPrice);
+        }
+        log(msg);
+
+        return new Record(cart.getItems(), customerId, totalPrice);
+    }
+
+
+    public String messageBuilder(long customerId, double totalPrice){
+        return String.format("Cashier %d, Receipt of customer %d:\nTotal Price - %f", id, customerId, totalPrice);
+    }
+
+    public String messageBuilder(long customerId, double totalPrice, double totalDiscountPrice){
+        return String.format("%s, Price with discount - %f", messageBuilder(customerId, totalPrice), totalDiscountPrice);
     }
 
     @Override
-    public boolean isEmpty() {
-        return queue.isEmpty();
+    public boolean isNotEmpty() {
+        return !queue.isEmpty();
     }
 }

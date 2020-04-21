@@ -28,7 +28,9 @@ public class Driver {
         else{
             shop = Shop.init();
         }
+        shop.handleCustomers();
+        shop.processRecords();
+        shop.makeReport();
         shop.save();
-        shop.serveCustomers();
     }
 }

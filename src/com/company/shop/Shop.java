@@ -1,5 +1,7 @@
 package com.company.shop;
 
+import com.company.items.Expirable;
+import com.company.items.Item;
 import com.company.items.clothes.Jeans;
 import com.company.items.clothes.Shirt;
 import com.company.items.foods.Milk;
@@ -14,33 +16,38 @@ import com.company.util.Logger;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Shop implements Serializable {
+    private final HashMap<Customer, Boolean> customerDiscount;
     private final List<Cashier> cashiers;
-    private final List<Customer> customers;
+    private final List<Item> soldItems;
+    private final List<Record> records;
     private final Exit exit;
+    public static final double DISCOUNT_PERCENTAGE = 5;
 
     public Shop(){
-        customers = new ArrayList<>();
         cashiers = new ArrayList<>();
+        soldItems = new ArrayList<>();
+        records = new ArrayList<>();
+        customerDiscount = new HashMap<>();
         exit = new Exit();
     }
 
-    public Shop(List<Cashier> cashiers, List<Customer> customers){
+    public Shop(List<Cashier> cashiers){
         this.cashiers = cashiers;
-        this.customers = customers;
+        soldItems = new ArrayList<>();
+        records = new ArrayList<>();
+        customerDiscount = new HashMap<>();
         exit = new Exit();
-    }
-
-    public List<Customer> getCustomers() {
-        return customers;
     }
 
     public void addCustomer(Customer customer){
-        customers.add(customer);
+        if (!customerDiscount.containsKey(customer)){
+            customerDiscount.put(customer, Boolean.FALSE);
+        }
     }
 
     public List<Cashier> getCashiers() {
@@ -56,7 +63,7 @@ public class Shop implements Serializable {
     }
 
     public void queueUpCustomers(){
-        customers.forEach(customer -> {
+        customerDiscount.keySet().forEach(customer -> {
             try {
                 customer.chooseQueue(getActiveCashiers());
             }
@@ -66,10 +73,56 @@ public class Shop implements Serializable {
         });
     }
 
-    public void serveCustomers(){
+    public void handleCustomers(){
         queueUpCustomers();
-        getActiveCashiers().forEach(Cashier::handleAll);
+        getActiveCashiers().forEach(cashier -> {
+            List<Record> tmpRecords = cashier.handleAll(customerDiscount);
+            tmpRecords.forEach(record -> soldItems.addAll(record.getItems()));
+            records.addAll(tmpRecords);
+        });
         exit.handleAll();
+    }
+
+    public void processRecords(){
+        HashMap<Long, Double> customerTotalSum = new HashMap<>();
+
+        records.stream()
+                .filter(record -> record.getDate().plusDays(10).isAfter(LocalDate.now()))
+                .forEach(record -> {
+                        double amount = customerTotalSum.getOrDefault(record.getCustomerId(), 0.0);
+                        customerTotalSum.put(record.getCustomerId(), amount + record.getAmount());
+                });
+
+        customerDiscount.keySet().forEach(customer -> {
+            boolean discount = customerTotalSum.getOrDefault(customer.getId(), 0.0) > Item.AVERAGE_PRICE * 5;
+            customerDiscount.put(customer, discount);
+        });
+
+    }
+
+    public void makeReport(){
+        moreExpensiveThan(Item.AVERAGE_PRICE);
+        expiringAfter(10);
+    }
+
+    public void moreExpensiveThan(double price){
+        soldItems.stream()
+                .filter(item -> item.getPrice() > price)
+                .forEach(item ->
+                    Logger.getInstance().log(String.format("Name %s; Price: %f, Exp. Date: -----", item.getName(), item.getPrice()))
+                );
+    }
+
+    public void expiringAfter(int days){
+        soldItems.stream()
+                .filter(item -> item instanceof Expirable)
+                .filter(item -> ((Expirable) item).goingToExpire(days))
+                .forEach(item ->
+                    Logger.getInstance().log(String.format(
+                            "Name %s; Price: %f, Exp. Date: %s",
+                            item.getName(),
+                            item.getPrice(),
+                            ((Expirable) item).getExpirationDate().format(DateTimeFormatter.ISO_LOCAL_DATE))));
     }
 
     public void save(){
@@ -111,7 +164,7 @@ public class Shop implements Serializable {
         customers.add(new RegularCustomer(5));
 
         customers.get(0).addItem(
-                new Milk("milk", 322, LocalDate.of(2020, 4, 12), 3.2));
+                new Milk("milk", 322, LocalDate.of(2020, 4, 29), 3.2));
         customers.get(1).addItem(
                 new Jeans("jeans", 1690, 44, "blue", "slim fit", "denim"));
         customers.get(1).addItem(
@@ -125,6 +178,8 @@ public class Shop implements Serializable {
         customers.get(3).addItem(
                 new Jeans("jeans", 1690, 44, "blue", "slim fit", "denim"));
 
-        return new Shop(cashiers, customers);
+        Shop shop = new Shop(cashiers);
+        customers.forEach(shop::addCustomer);
+        return shop;
     }
 }

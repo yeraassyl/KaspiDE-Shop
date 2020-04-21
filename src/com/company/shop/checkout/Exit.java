@@ -9,7 +9,7 @@ public class Exit implements QueueLine {
     private final LinkedList<Customer> queue;
 
     public Exit(){
-        queue = new LinkedList<Customer>();
+        queue = new LinkedList<>();
     }
 
     @Override
@@ -22,19 +22,24 @@ public class Exit implements QueueLine {
         queue.add(customer);
     }
 
-    @Override
-    public Customer retrieveFirst(){
-        return queue.removeFirst();
+    public void handleAll(){
+        while(isNotEmpty()){
+            handle(queue.removeFirst());
+        }
+    }
+
+    public void handle(Customer customer) {
+        String msg = messageBuilder(customer.getId());
+        log(msg);
+    }
+
+    public String messageBuilder(long customerId){
+        return String.format("Exit: Customer %d is leaving", customerId);
     }
 
     @Override
-    public String message(Customer customer) {
-        return String.format("Customer %d is leaving", customer.getId());
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return queue.isEmpty();
+    public boolean isNotEmpty() {
+        return !queue.isEmpty();
     }
 
 }

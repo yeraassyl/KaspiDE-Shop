@@ -3,6 +3,8 @@ import com.company.items.Item;
 import com.company.items.foods.Food;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Cart implements Serializable {
@@ -27,12 +29,22 @@ public class Cart implements Serializable {
         else goods.addItem(item);
     }
 
+    public List<Item> getItems(){
+        List<Item> items = new ArrayList<>(goods.getItems());
+        items.addAll(goods.getItems());
+        return items;
+    }
+
     public int itemCount(){
         return foods.itemCount() + goods.itemCount();
     }
 
     public double totalPrice(){
         return foods.totalPrice() + goods.totalPrice();
+    }
+
+    public double totalPrice(double discountPercentage){
+        return (foods.totalPrice() + goods.totalPrice()) * (1.00 - discountPercentage);
     }
 }
 
