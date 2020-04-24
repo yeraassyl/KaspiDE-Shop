@@ -1,0 +1,230 @@
+Older then 35
+"Shirley MacLaine"
+"Holly Hunter"
+"Susan Sarandon"
+"Julianne Moore"
+"Geraldine Page"
+"Marie Dressler"
+"Cate Blanchett"
+"Ellen Burstyn"
+"Joan Crawford"
+"Ingrid Bergman"
+"Louise Fletcher"
+"Kathy Bates"
+"Faye Dunaway"
+"Jessica Tandy"
+"Vivien Leigh"
+"Helen Mirren"
+"Meryl Streep"
+"Sally Field"
+"Sandra Bullock"
+"Frances McDormand"
+"Susan Hayward"
+"Shirley Booth"
+"Jane Fonda"
+"Glenda Jackson"
+"Jessica Lange"
+"Cher"
+"Simone Signoret"
+"Mary Pickford"
+"Anna Magnani"
+"Greer Garson"
+"Katharine Hepburn"
+Got more oscar than 2
+"Katharine Hepburn"
+Sort by name the movie: 
+Record{index=24, year=1951, age=38, name='"Vivien Leigh"', movie='"A Streetcar Named Desire"'}
+Record{index=47, year=1974, age=37, name='"Glenda Jackson"', movie='"A Touch of Class"'}
+Record{index=48, year=1975, age=42, name='"Ellen Burstyn"', movie='"Alice Doesn't Live Here Anymore"'}
+Record{index=29, year=1956, age=41, name='"Ingrid Bergman"', movie='"Anastasia"'}
+Record{index=51, year=1978, age=32, name='"Diane Keaton"', movie='"Annie Hall"'}
+Record{index=71, year=1998, age=34, name='"Helen Hunt"', movie='"As Good as It Gets"'}
+Record{index=33, year=1960, age=29, name='"Elizabeth Taylor"', movie='"BUtterfield 8"'}
+Record{index=84, year=2011, age=29, name='"Natalie Portman"', movie='"Black Swan"'}
+Record{index=87, year=2014, age=44, name='"Cate Blanchett"', movie='"Blue Jasmine"'}
+Record{index=68, year=1995, age=45, name='"Jessica Lange"', movie='"Blue Sky"'}
+Record{index=23, year=1950, age=29, name='"Judy Holliday"', movie='"Born Yesterday"'}
+Record{index=73, year=2000, age=25, name='"Hilary Swank"', movie='"Boys Don't Cry"'}
+Record{index=46, year=1973, age=27, name='"Liza Minnelli"', movie='"Cabaret"'}
+Record{index=60, year=1987, age=21, name='"Marlee Matlin"', movie='"Children of a Lesser God"'}
+Record{index=54, year=1981, age=31, name='"Sissy Spacek"', movie='"Coal Miner's Daughter"'}
+Record{index=25, year=1952, age=54, name='"Shirley Booth"', movie='"Come Back'}
+Record{index=52, year=1979, age=41, name='"Jane Fonda"', movie='"Coming Home"'}
+Record{index=2, year=1929, age=37, name='"Mary Pickford"', movie='"Coquette"'}
+Record{index=8, year=1935, age=27, name='"Bette Davis"', movie='"Dangerous"'}
+Record{index=38, year=1965, age=25, name='"Julie Christie"', movie='"Darling"'}
+Record{index=69, year=1996, age=49, name='"Susan Sarandon"', movie='"Dead Man Walking"'}
+Record{index=63, year=1990, age=80, name='"Jessica Tandy"', movie='"Driving Miss Daisy"'}
+Record{index=74, year=2001, age=33, name='"Julia Roberts"', movie='"Erin Brockovich"'}
+Record{index=70, year=1997, age=39, name='"Frances McDormand"', movie='"Fargo"'}
+Record{index=42, year=1969, age=26, name='"Barbra Streisand"', movie='"Funny Girl"'}
+Record{index=17, year=1944, age=29, name='"Ingrid Bergman"', movie='"Gaslight"'}
+Record{index=12, year=1939, age=26, name='"Vivien Leigh"', movie='"Gone with the Wind"'}
+Record{index=40, year=1967, age=60, name='"Katharine Hepburn"', movie='"Guess Who's Coming to Dinner"'}
+Record{index=66, year=1993, age=33, name='"Emma Thompson"', movie='"Howards End"'}
+Record{index=36, year=1963, age=31, name='"Patricia Neal"', movie='"Hud"'}
+Record{index=31, year=1958, age=41, name='"Susan Hayward"', movie='"I Want to Live!"'}
+Record{index=7, year=1934, age=31, name='"Claudette Colbert"', movie='"It Happened One Night"'}
+Record{index=11, year=1938, age=30, name='"Bette Davis"', movie='"Jezebel"'}
+Record{index=21, year=1948, age=32, name='"Jane Wyman"', movie='"Johnny Belinda"'}
+Record{index=13, year=1940, age=29, name='"Ginger Rogers"', movie='"Kitty Foyle"'}
+Record{index=45, year=1972, age=34, name='"Jane Fonda"', movie='"Klute"'}
+Record{index=81, year=2008, age=32, name='"Marion Cotillard"', movie='"La Vie en rose"'}
+Record{index=37, year=1964, age=29, name='"Julie Andrews"', movie='"Mary Poppins"'}
+Record{index=18, year=1945, age=40, name='"Joan Crawford"', movie='"Mildred Pierce"'}
+Record{index=78, year=2005, age=30, name='"Hilary Swank"', movie='"Million Dollar Baby"'}
+Record{index=4, year=1931, age=63, name='"Marie Dressler"', movie='"Min and Bill"'}
+Record{index=64, year=1991, age=42, name='"Kathy Bates"', movie='"Misery"'}
+Record{index=77, year=2004, age=28, name='"Charlize Theron"', movie='"Monster"'}
+Record{index=75, year=2002, age=35, name='"Halle Berry"', movie='"Monster's Ball"'}
+Record{index=61, year=1988, age=41, name='"Cher"', movie='"Moonstruck"'}
+Record{index=6, year=1933, age=26, name='"Katharine Hepburn"', movie='"Morning Glory"'}
+Record{index=15, year=1942, age=38, name='"Greer Garson"', movie='"Mrs. Miniver"'}
+Record{index=50, year=1977, age=36, name='"Faye Dunaway"', movie='"Network"'}
+Record{index=53, year=1980, age=33, name='"Sally Field"', movie='"Norma Rae"'}
+Record{index=55, year=1982, age=74, name='"Katharine Hepburn"', movie='"On Golden Pond"'}
+Record{index=49, year=1976, age=41, name='"Louise Fletcher"', movie='"One Flew Over the Cuckoo's Nest"'}
+Record{index=58, year=1985, age=38, name='"Sally Field"', movie='"Places in the Heart"'}
+Record{index=26, year=1953, age=24, name='"Audrey Hepburn"', movie='"Roman Holiday"'}
+Record{index=32, year=1959, age=39, name='"Simone Signoret"', movie='"Room at the Top"'}
+Record{index=89, year=2016, age=26, name='"Brie Larson"', movie='"Room"'}
+Record{index=1, year=1928, age=22, name='"Janet Gaynor"', movie='"Seventh Heaven'}
+Record{index=72, year=1999, age=26, name='"Gwyneth Paltrow"', movie='"Shakespeare in Love"'}
+Record{index=86, year=2013, age=22, name='"Jennifer Lawrence"', movie='"Silver Linings Playbook"'}
+Record{index=56, year=1983, age=33, name='"Meryl Streep"', movie='"Sophie's Choice"'}
+Record{index=88, year=2015, age=54, name='"Julianne Moore"', movie='"Still Alice"'}
+Record{index=14, year=1941, age=24, name='"Joan Fontaine"', movie='"Suspicion"'}
+Record{index=57, year=1984, age=49, name='"Shirley MacLaine"', movie='"Terms of Endearment"'}
+Record{index=62, year=1989, age=26, name='"Jodie Foster"', movie='"The Accused"'}
+Record{index=83, year=2010, age=45, name='"Sandra Bullock"', movie='"The Blind Side"'}
+Record{index=27, year=1954, age=25, name='"Grace Kelly"', movie='"The Country Girl"'}
+Record{index=3, year=1930, age=28, name='"Norma Shearer"', movie='"The Divorcee"'}
+Record{index=20, year=1947, age=35, name='"Loretta Young"', movie='"The Farmer's Daughter"'}
+Record{index=10, year=1937, age=28, name='"Luise Rainer"', movie='"The Good Earth"'}
+Record{index=9, year=1936, age=27, name='"Luise Rainer"', movie='"The Great Ziegfeld"'}
+Record{index=22, year=1949, age=33, name='"Olivia de Havilland"', movie='"The Heiress"'}
+Record{index=76, year=2003, age=35, name='"Nicole Kidman"', movie='"The Hours"'}
+Record{index=85, year=2012, age=62, name='"Meryl Streep"', movie='"The Iron Lady"'}
+Record{index=41, year=1968, age=61, name='"Katharine Hepburn"', movie='"The Lion in Winter"'}
+Record{index=35, year=1962, age=31, name='"Anne Bancroft"', movie='"The Miracle Worker"'}
+Record{index=67, year=1994, age=36, name='"Holly Hunter"', movie='"The Piano"'}
+Record{index=43, year=1970, age=35, name='"Maggie Smith"', movie='"The Prime of Miss Jean Brodie"'}
+Record{index=80, year=2007, age=61, name='"Helen Mirren"', movie='"The Queen"'}
+Record{index=82, year=2009, age=33, name='"Kate Winslet"', movie='"The Reader"'}
+Record{index=28, year=1955, age=48, name='"Anna Magnani"', movie='"The Rose Tattoo"'}
+Record{index=65, year=1992, age=29, name='"Jodie Foster"', movie='"The Silence of the Lambs"'}
+Record{index=5, year=1932, age=32, name='"Helen Hayes"', movie='"The Sin of Madelon Claudet"'}
+Record{index=16, year=1943, age=25, name='"Jennifer Jones"', movie='"The Song of Bernadette"'}
+Record{index=30, year=1957, age=28, name='"Joanne Woodward"', movie='"The Three Faces of Eve"'}
+Record{index=59, year=1986, age=61, name='"Geraldine Page"', movie='"The Trip to Bountiful"'}
+Record{index=19, year=1946, age=30, name='"Olivia de Havilland"', movie='"To Each His Own"'}
+Record{index=34, year=1961, age=27, name='"Sophia Loren"', movie='"Two Women"'}
+Record{index=79, year=2006, age=29, name='"Reese Witherspoon"', movie='"Walk the Line"'}
+Record{index=39, year=1966, age=35, name='"Elizabeth Taylor"', movie='"Who's Afraid of Virginia Woolf?"'}
+Record{index=44, year=1971, age=34, name='"Glenda Jackson"', movie='"Women in Love"'}
+Top 5 names
+"Anna
+"Anne
+"Audrey
+"Barbra
+"Bette
+Decade #1
+Record{index=3, year=1930, age=28, name='"Norma Shearer"', movie='"The Divorcee"'}
+Record{index=13, year=1940, age=29, name='"Ginger Rogers"', movie='"Kitty Foyle"'}
+Record{index=23, year=1950, age=29, name='"Judy Holliday"', movie='"Born Yesterday"'}
+Record{index=33, year=1960, age=29, name='"Elizabeth Taylor"', movie='"BUtterfield 8"'}
+Record{index=43, year=1970, age=35, name='"Maggie Smith"', movie='"The Prime of Miss Jean Brodie"'}
+Record{index=53, year=1980, age=33, name='"Sally Field"', movie='"Norma Rae"'}
+Record{index=63, year=1990, age=80, name='"Jessica Tandy"', movie='"Driving Miss Daisy"'}
+Record{index=73, year=2000, age=25, name='"Hilary Swank"', movie='"Boys Don't Cry"'}
+Record{index=83, year=2010, age=45, name='"Sandra Bullock"', movie='"The Blind Side"'}
+Decade #2
+Record{index=4, year=1931, age=63, name='"Marie Dressler"', movie='"Min and Bill"'}
+Record{index=14, year=1941, age=24, name='"Joan Fontaine"', movie='"Suspicion"'}
+Record{index=24, year=1951, age=38, name='"Vivien Leigh"', movie='"A Streetcar Named Desire"'}
+Record{index=34, year=1961, age=27, name='"Sophia Loren"', movie='"Two Women"'}
+Record{index=44, year=1971, age=34, name='"Glenda Jackson"', movie='"Women in Love"'}
+Record{index=54, year=1981, age=31, name='"Sissy Spacek"', movie='"Coal Miner's Daughter"'}
+Record{index=64, year=1991, age=42, name='"Kathy Bates"', movie='"Misery"'}
+Record{index=74, year=2001, age=33, name='"Julia Roberts"', movie='"Erin Brockovich"'}
+Record{index=84, year=2011, age=29, name='"Natalie Portman"', movie='"Black Swan"'}
+Decade #3
+Record{index=5, year=1932, age=32, name='"Helen Hayes"', movie='"The Sin of Madelon Claudet"'}
+Record{index=15, year=1942, age=38, name='"Greer Garson"', movie='"Mrs. Miniver"'}
+Record{index=25, year=1952, age=54, name='"Shirley Booth"', movie='"Come Back'}
+Record{index=35, year=1962, age=31, name='"Anne Bancroft"', movie='"The Miracle Worker"'}
+Record{index=45, year=1972, age=34, name='"Jane Fonda"', movie='"Klute"'}
+Record{index=55, year=1982, age=74, name='"Katharine Hepburn"', movie='"On Golden Pond"'}
+Record{index=65, year=1992, age=29, name='"Jodie Foster"', movie='"The Silence of the Lambs"'}
+Record{index=75, year=2002, age=35, name='"Halle Berry"', movie='"Monster's Ball"'}
+Record{index=85, year=2012, age=62, name='"Meryl Streep"', movie='"The Iron Lady"'}
+Decade #4
+Record{index=6, year=1933, age=26, name='"Katharine Hepburn"', movie='"Morning Glory"'}
+Record{index=16, year=1943, age=25, name='"Jennifer Jones"', movie='"The Song of Bernadette"'}
+Record{index=26, year=1953, age=24, name='"Audrey Hepburn"', movie='"Roman Holiday"'}
+Record{index=36, year=1963, age=31, name='"Patricia Neal"', movie='"Hud"'}
+Record{index=46, year=1973, age=27, name='"Liza Minnelli"', movie='"Cabaret"'}
+Record{index=56, year=1983, age=33, name='"Meryl Streep"', movie='"Sophie's Choice"'}
+Record{index=66, year=1993, age=33, name='"Emma Thompson"', movie='"Howards End"'}
+Record{index=76, year=2003, age=35, name='"Nicole Kidman"', movie='"The Hours"'}
+Record{index=86, year=2013, age=22, name='"Jennifer Lawrence"', movie='"Silver Linings Playbook"'}
+Decade #5
+Record{index=7, year=1934, age=31, name='"Claudette Colbert"', movie='"It Happened One Night"'}
+Record{index=17, year=1944, age=29, name='"Ingrid Bergman"', movie='"Gaslight"'}
+Record{index=27, year=1954, age=25, name='"Grace Kelly"', movie='"The Country Girl"'}
+Record{index=37, year=1964, age=29, name='"Julie Andrews"', movie='"Mary Poppins"'}
+Record{index=47, year=1974, age=37, name='"Glenda Jackson"', movie='"A Touch of Class"'}
+Record{index=57, year=1984, age=49, name='"Shirley MacLaine"', movie='"Terms of Endearment"'}
+Record{index=67, year=1994, age=36, name='"Holly Hunter"', movie='"The Piano"'}
+Record{index=77, year=2004, age=28, name='"Charlize Theron"', movie='"Monster"'}
+Record{index=87, year=2014, age=44, name='"Cate Blanchett"', movie='"Blue Jasmine"'}
+Decade #6
+Record{index=8, year=1935, age=27, name='"Bette Davis"', movie='"Dangerous"'}
+Record{index=18, year=1945, age=40, name='"Joan Crawford"', movie='"Mildred Pierce"'}
+Record{index=28, year=1955, age=48, name='"Anna Magnani"', movie='"The Rose Tattoo"'}
+Record{index=38, year=1965, age=25, name='"Julie Christie"', movie='"Darling"'}
+Record{index=48, year=1975, age=42, name='"Ellen Burstyn"', movie='"Alice Doesn't Live Here Anymore"'}
+Record{index=58, year=1985, age=38, name='"Sally Field"', movie='"Places in the Heart"'}
+Record{index=68, year=1995, age=45, name='"Jessica Lange"', movie='"Blue Sky"'}
+Record{index=78, year=2005, age=30, name='"Hilary Swank"', movie='"Million Dollar Baby"'}
+Record{index=88, year=2015, age=54, name='"Julianne Moore"', movie='"Still Alice"'}
+Decade #7
+Record{index=9, year=1936, age=27, name='"Luise Rainer"', movie='"The Great Ziegfeld"'}
+Record{index=19, year=1946, age=30, name='"Olivia de Havilland"', movie='"To Each His Own"'}
+Record{index=29, year=1956, age=41, name='"Ingrid Bergman"', movie='"Anastasia"'}
+Record{index=39, year=1966, age=35, name='"Elizabeth Taylor"', movie='"Who's Afraid of Virginia Woolf?"'}
+Record{index=49, year=1976, age=41, name='"Louise Fletcher"', movie='"One Flew Over the Cuckoo's Nest"'}
+Record{index=59, year=1986, age=61, name='"Geraldine Page"', movie='"The Trip to Bountiful"'}
+Record{index=69, year=1996, age=49, name='"Susan Sarandon"', movie='"Dead Man Walking"'}
+Record{index=79, year=2006, age=29, name='"Reese Witherspoon"', movie='"Walk the Line"'}
+Record{index=89, year=2016, age=26, name='"Brie Larson"', movie='"Room"'}
+Decade #8
+Record{index=10, year=1937, age=28, name='"Luise Rainer"', movie='"The Good Earth"'}
+Record{index=20, year=1947, age=35, name='"Loretta Young"', movie='"The Farmer's Daughter"'}
+Record{index=30, year=1957, age=28, name='"Joanne Woodward"', movie='"The Three Faces of Eve"'}
+Record{index=40, year=1967, age=60, name='"Katharine Hepburn"', movie='"Guess Who's Coming to Dinner"'}
+Record{index=50, year=1977, age=36, name='"Faye Dunaway"', movie='"Network"'}
+Record{index=60, year=1987, age=21, name='"Marlee Matlin"', movie='"Children of a Lesser God"'}
+Record{index=70, year=1997, age=39, name='"Frances McDormand"', movie='"Fargo"'}
+Record{index=80, year=2007, age=61, name='"Helen Mirren"', movie='"The Queen"'}
+Decade #9
+Record{index=1, year=1928, age=22, name='"Janet Gaynor"', movie='"Seventh Heaven'}
+Record{index=11, year=1938, age=30, name='"Bette Davis"', movie='"Jezebel"'}
+Record{index=21, year=1948, age=32, name='"Jane Wyman"', movie='"Johnny Belinda"'}
+Record{index=31, year=1958, age=41, name='"Susan Hayward"', movie='"I Want to Live!"'}
+Record{index=41, year=1968, age=61, name='"Katharine Hepburn"', movie='"The Lion in Winter"'}
+Record{index=51, year=1978, age=32, name='"Diane Keaton"', movie='"Annie Hall"'}
+Record{index=61, year=1988, age=41, name='"Cher"', movie='"Moonstruck"'}
+Record{index=71, year=1998, age=34, name='"Helen Hunt"', movie='"As Good as It Gets"'}
+Record{index=81, year=2008, age=32, name='"Marion Cotillard"', movie='"La Vie en rose"'}
+Decade #10
+Record{index=2, year=1929, age=37, name='"Mary Pickford"', movie='"Coquette"'}
+Record{index=12, year=1939, age=26, name='"Vivien Leigh"', movie='"Gone with the Wind"'}
+Record{index=22, year=1949, age=33, name='"Olivia de Havilland"', movie='"The Heiress"'}
+Record{index=32, year=1959, age=39, name='"Simone Signoret"', movie='"Room at the Top"'}
+Record{index=42, year=1969, age=26, name='"Barbra Streisand"', movie='"Funny Girl"'}
+Record{index=52, year=1979, age=41, name='"Jane Fonda"', movie='"Coming Home"'}
+Record{index=62, year=1989, age=26, name='"Jodie Foster"', movie='"The Accused"'}
+Record{index=72, year=1999, age=26, name='"Gwyneth Paltrow"', movie='"Shakespeare in Love"'}
+Record{index=82, year=2009, age=33, name='"Kate Winslet"', movie='"The Reader"'}
+Most common age for Oscar: 29
