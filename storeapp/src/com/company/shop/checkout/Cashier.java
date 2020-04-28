@@ -6,10 +6,12 @@ import com.company.shop.Record;
 import com.company.shop.Shop;
 import com.company.shop.cart.Cart;
 import com.company.shop.customer.Customer;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 
 import java.util.*;
+import java.util.concurrent.Callable;
 
-public class Cashier implements QueueLine {
+public class Cashier implements QueueLine, Callable<List<Record>> {
 
     public enum CashierState {
         ACTIVE("Cashier is working"),
@@ -60,13 +62,21 @@ public class Cashier implements QueueLine {
         queue.add(customer);
     }
 
-    public List<Record> handleAll(HashMap<Customer, Boolean> customerDiscount) {
+
+    //handleAll -> call
+    @Override
+    public List<Record> call() {
         Customer customer;
         List<Record> records = new ArrayList<>();
-        while (!isNotEmpty()){
+        while (isNotEmpty()){
             customer = queue.removeFirst();
-            boolean discount = customerDiscount.get(customer);
+            boolean discount = Shop.customerDiscount.get(customer);
             records.add(handle(customer, discount));
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                log("Something went wrong");
+            }
         }
         return records;
     }
@@ -85,7 +95,6 @@ public class Cashier implements QueueLine {
             msg = messageBuilder(customerId, totalPrice);
         }
         log(msg);
-
         return new Record(cart.getItems(), customerId, totalPrice);
     }
 

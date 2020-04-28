@@ -16,6 +16,7 @@ public interface QueueLine extends Serializable {
     void addToQueue(Customer customer);
 
     default void log(String msg){
-        Logger.getInstance().log(msg);
+        String message = String.format("Thread no %d : %s", Thread.currentThread().getId(), msg);
+        Logger.getInstance().log(message);
     }
 }

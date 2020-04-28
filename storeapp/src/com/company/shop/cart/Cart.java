@@ -1,50 +1,47 @@
 package com.company.shop.cart;
+import com.company.items.Expirable;
 import com.company.items.Item;
 import com.company.items.foods.Food;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Cart implements Serializable {
-    private final SubCart<Food> foods;
-    private final SubCart<Item> goods;
+    private final List<Item> items;
 
     public Cart(){
-        this.foods = new SubCart<>();
-        this.goods = new SubCart<>();
+        this.items = new ArrayList<>();
     }
 
-    public SubCart<Food> getFoods() {
-        return foods;
-    }
-
-    public SubCart<Item> getGoods() {
-        return goods;
-    }
-
-    public void addItem(Item item){
-        if (item instanceof Food) foods.addItem((Food) item);
-        else goods.addItem(item);
-    }
-
-    public List<Item> getItems(){
-        List<Item> items = new ArrayList<>(goods.getItems());
-        items.addAll(goods.getItems());
+    public List<Item> getItems() {
         return items;
     }
 
+    public void addItem(Item item){
+        items.add(item);
+    }
+
     public int itemCount(){
-        return foods.itemCount() + goods.itemCount();
+        return items.size();
     }
 
     public double totalPrice(){
-        return foods.totalPrice() + goods.totalPrice();
+        return items.stream().mapToDouble(Item::getPrice).sum();
     }
 
     public double totalPrice(double discountPercentage){
-        return (foods.totalPrice() + goods.totalPrice()) * (1.00 - discountPercentage);
+        return totalPrice() * (1.00 - discountPercentage);
+    }
+
+    public List<Item> notExpiredItems(){
+        return items.stream()
+                .filter(item -> item instanceof Expirable)
+                .filter(item -> LocalDate.now().isBefore(((Expirable)item).getExpirationDate()))
+                .collect(Collectors.toList());
     }
 }
 

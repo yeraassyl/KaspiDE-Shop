@@ -9,8 +9,6 @@ import com.company.shop.customer.LazyCustomer;
 import com.company.shop.customer.RegularCustomer;
 import com.company.shop.customer.SmartCustomer;
 import com.company.util.Logger;
-import sun.security.provider.SHA;
-
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,7 +16,7 @@ import java.util.List;
 
 public class Driver {
     public static void main(String[] args) {
-        Logger.setOutputTarget(Logger.Target.FILE);
+        Logger.setOutputTarget(Logger.Target.CONSOLE);
         Shop shop = Shop.load();
         if (shop != null){
             Customer customer = new RegularCustomer(6);

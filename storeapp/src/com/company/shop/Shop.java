@@ -13,35 +13,44 @@ import com.company.shop.customer.LazyCustomer;
 import com.company.shop.customer.RegularCustomer;
 import com.company.shop.customer.SmartCustomer;
 import com.company.util.Logger;
+import com.sun.deploy.trace.LoggerTraceListener;
+import sun.rmi.runtime.Log;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 public class Shop implements Serializable {
-    private final HashMap<Customer, Boolean> customerDiscount;
+    public static HashMap<Customer, Boolean> customerDiscount = new HashMap<>();
+    private HashMap<Customer, Boolean> customerDiscountDb;
     private final List<Cashier> cashiers;
     private final List<Item> soldItems;
     private final List<Record> records;
     private final Exit exit;
+    public static ExecutorService es = Executors.newCachedThreadPool();
     public static final double DISCOUNT_PERCENTAGE = 5;
 
     public Shop(){
         cashiers = new ArrayList<>();
         soldItems = new ArrayList<>();
         records = new ArrayList<>();
-        customerDiscount = new HashMap<>();
         exit = new Exit();
+        customerDiscountDb = new HashMap<>();
     }
 
     public Shop(List<Cashier> cashiers){
         this.cashiers = cashiers;
         soldItems = new ArrayList<>();
         records = new ArrayList<>();
-        customerDiscount = new HashMap<>();
         exit = new Exit();
+        customerDiscountDb = new HashMap<>();
     }
 
     public void addCustomer(Customer customer){
@@ -75,12 +84,29 @@ public class Shop implements Serializable {
 
     public void handleCustomers(){
         queueUpCustomers();
+        List<Future<List<Record>>> futureList = new ArrayList<>();
         getActiveCashiers().forEach(cashier -> {
-            List<Record> tmpRecords = cashier.handleAll(customerDiscount);
-            tmpRecords.forEach(record -> soldItems.addAll(record.getItems()));
-            records.addAll(tmpRecords);
+            futureList.add(es.submit(cashier));
         });
-        exit.handleAll();
+        futureList.forEach(val -> {
+            try {
+                addItemsAndRecords(val.get());
+            } catch (InterruptedException | ExecutionException e) {
+                Logger.getInstance().log("Something went wrong " + e);
+            }
+        });
+        es.execute(exit);
+        es.shutdown();
+        if (es.isTerminated()){
+            Logger.getInstance().log("All the cashiers finished their work");
+        }
+    }
+
+    public void addItemsAndRecords(List<Record> recordList){
+        synchronized (this){
+            recordList.forEach(record -> soldItems.addAll(record.getItems()));
+            records.addAll(recordList);
+        }
     }
 
     public void processRecords(){
@@ -128,6 +154,7 @@ public class Shop implements Serializable {
     public void save(){
         try (FileOutputStream fos = new FileOutputStream("shop.ser")){
             ObjectOutputStream out = new ObjectOutputStream(fos);
+            this.customerDiscountDb = customerDiscount;
             out.writeObject(this);
             out.close();
         } catch (IOException e) {
@@ -140,6 +167,7 @@ public class Shop implements Serializable {
         try (FileInputStream fis = new FileInputStream("shop.ser")) {
             ObjectInputStream in = new ObjectInputStream(fis);
             instance = (Shop) in.readObject();
+            Shop.customerDiscount = instance.customerDiscountDb;
             in.close();
             fis.close();
             Logger.getInstance().log("Shop object have been successfully deserialized");

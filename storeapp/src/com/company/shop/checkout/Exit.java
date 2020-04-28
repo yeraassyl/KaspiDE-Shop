@@ -1,10 +1,11 @@
 package com.company.shop.checkout;
 
 import com.company.shop.customer.Customer;
+import com.company.util.Logger;
 
 import java.util.LinkedList;
 
-public class Exit implements QueueLine {
+public class Exit implements QueueLine, Runnable{
 
     private final LinkedList<Customer> queue;
 
@@ -22,9 +23,16 @@ public class Exit implements QueueLine {
         queue.add(customer);
     }
 
-    public void handleAll(){
+    //handleAll -> run
+    @Override
+    public void run(){
         while(isNotEmpty()){
             handle(queue.removeFirst());
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                log("Something went wrong");
+            }
         }
     }
 
@@ -41,5 +49,4 @@ public class Exit implements QueueLine {
     public boolean isNotEmpty() {
         return !queue.isEmpty();
     }
-
 }
