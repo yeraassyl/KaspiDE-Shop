@@ -1,17 +1,15 @@
 package com.company.shop.checkout;
 
 
-import com.company.items.Item;
 import com.company.shop.Record;
 import com.company.shop.Shop;
 import com.company.shop.cart.Cart;
 import com.company.shop.customer.Customer;
-import jdk.nashorn.internal.codegen.CompilerConstants;
-
 import java.util.*;
-import java.util.concurrent.Callable;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class Cashier implements QueueLine, Callable<List<Record>> {
+public class Cashier implements QueueLine{
 
     public enum CashierState {
         ACTIVE("Cashier is working"),
@@ -28,12 +26,12 @@ public class Cashier implements QueueLine, Callable<List<Record>> {
 
     private final int id;
     private CashierState state;
-    private final LinkedList<Customer> queue;
+    private final Queue<Customer> queue;
 
     public Cashier(int id, CashierState state){
         this.id = id;
         this.state = state;
-        this.queue = new LinkedList<>();
+        this.queue = new ConcurrentLinkedQueue<>();
     }
 
     public CashierState getState() {
@@ -53,35 +51,25 @@ public class Cashier implements QueueLine, Callable<List<Record>> {
     }
 
     @Override
-    public LinkedList<Customer> getQueue() {
+    public Queue<Customer> getQueue() {
         return queue;
     }
 
     @Override
     public void addToQueue(Customer customer) {
-        queue.add(customer);
-    }
-
-
-    //handleAll -> call
-    @Override
-    public List<Record> call() {
-        Customer customer;
-        List<Record> records = new ArrayList<>();
-        while (isNotEmpty()){
-            customer = queue.removeFirst();
-            boolean discount = Shop.customerDiscount.get(customer);
-            records.add(handle(customer, discount));
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                log("Something went wrong");
+        if (!isNotEmpty()) {
+            queue.add(customer);
+            synchronized (this) {
+                this.notify();
             }
+        } else {
+            queue.add(customer);
         }
-        return records;
     }
 
-    public Record handle(Customer customer, boolean discount){
+    public Record handle(ConcurrentHashMap<Customer, Boolean> customerDiscount){
+        Customer customer = queue.remove();
+        boolean discount = customerDiscount.get(customer);
         Cart cart = customer.getCart();
         long customerId = customer.getId();
         double totalPrice = cart.totalPrice();

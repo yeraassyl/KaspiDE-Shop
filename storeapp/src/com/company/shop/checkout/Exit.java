@@ -1,43 +1,39 @@
 package com.company.shop.checkout;
 
 import com.company.shop.customer.Customer;
-import com.company.util.Logger;
+
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import java.util.LinkedList;
 
-public class Exit implements QueueLine, Runnable{
+public class Exit implements QueueLine{
 
-    private final LinkedList<Customer> queue;
+    private final Queue<Customer> queue;
 
     public Exit(){
-        queue = new LinkedList<>();
+        queue = new ConcurrentLinkedQueue<>();
     }
 
     @Override
-    public LinkedList<Customer> getQueue() {
+    public Queue<Customer> getQueue() {
         return queue;
     }
 
     @Override
     public void addToQueue(Customer customer) {
-        queue.add(customer);
-    }
-
-    //handleAll -> run
-    @Override
-    public void run(){
-        while(isNotEmpty()){
-            handle(queue.removeFirst());
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                log("Something went wrong");
+        if (!isNotEmpty()) {
+            queue.add(customer);
+            synchronized (this) {
+                this.notify();
             }
+        } else {
+            queue.add(customer);
         }
     }
 
-    public void handle(Customer customer) {
-        String msg = messageBuilder(customer.getId());
+    public void handle() {
+        String msg = messageBuilder(queue.remove().getId());
         log(msg);
     }
 
